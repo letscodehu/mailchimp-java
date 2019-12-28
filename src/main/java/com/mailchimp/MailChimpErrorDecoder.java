@@ -13,7 +13,6 @@ import feign.RetryableException;
 import feign.codec.ErrorDecoder;
 import lombok.NonNull;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,11 +29,10 @@ import static java.util.concurrent.TimeUnit.SECONDS;
  */
 public class MailChimpErrorDecoder implements ErrorDecoder {
 
-    private final ObjectMapper om;
-
+    private final ObjectMapper objectMapper;
 
     public MailChimpErrorDecoder() {
-        om = new ObjectMapper();
+        objectMapper = new ObjectMapper();
     }
 
     @Override
@@ -42,7 +40,7 @@ public class MailChimpErrorDecoder implements ErrorDecoder {
         if (response.status() == 400 || response.status() == 404 || response.status() == 500) {
             MailChimpError error;
             try {
-                error = om.readValue(response.body().asInputStream(), MailChimpError.class);
+                error = objectMapper.readValue(response.body().asInputStream(), MailChimpError.class);
                 return new MailChimpErrorException(response.status(), response.reason(), error);
             } catch (Exception ex) {
                 return FeignException.errorStatus(methodKey, response);

@@ -1,0 +1,55 @@
+{
+  "id": "customer_id",
+  "email_address": "email@email.com",
+  "opt_in_status": false,
+  "company": "",
+  "first_name": "",
+  "last_name": "",
+  "orders_count": 0,
+  "total_spent": 0,
+  "address": {
+    "address1": "",
+    "address2": "",
+    "city": "",
+    "province": "",
+    "province_code": "",
+    "postal_code": "",
+    "country": "",
+    "country_code": ""
+  },
+  "created_at": "2019-12-21T14:42:46+00:00",
+  "updated_at": "2019-12-28T17:15:57+00:00",
+  "_links": [
+    {
+      "rel": "self",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/customers/customer_id",
+      "method": "GET",
+      "targetSchema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Customers/Response.json"
+    },
+    {
+      "rel": "parent",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/customers",
+      "method": "GET",
+      "targetSchema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Customers/CollectionResponse.json"
+    },
+    {
+      "rel": "update",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/customers/customer_id",
+      "method": "PATCH",
+      "targetSchema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Customers/Response.json",
+      "schema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Customers/PATCH.json"
+    },
+    {
+      "rel": "upsert",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/customers/customer_id",
+      "method": "PUT",
+      "targetSchema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Customers/Response.json",
+      "schema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Customers/PUT.json"
+    },
+    {
+      "rel": "delete",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/customers/customer_id",
+      "method": "DELETE"
+    }
+  ]
+}

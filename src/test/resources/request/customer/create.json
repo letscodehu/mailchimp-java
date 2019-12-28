@@ -1,0 +1,7 @@
+{
+  "id" : "customer_id",
+  "email_address" : "email@email.com",
+  "opt_in_status" : false,
+  "orders_count" : 0,
+  "total_spent" : 0
+}

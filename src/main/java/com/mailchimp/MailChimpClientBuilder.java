@@ -59,7 +59,7 @@ public class MailChimpClientBuilder {
         Objects.requireNonNull(apiBase, "apiBase is required");
         Objects.requireNonNull(authRequestInterceptor, "authRequestInterceptor is required");
 
-        MailChimpClient mailChimp = Feign.builder()
+        return Feign.builder()
                 .decoder(new JacksonDecoder())
                 .encoder(new JacksonEncoder())
                 .errorDecoder(new MailChimpErrorDecoder())
@@ -68,6 +68,5 @@ public class MailChimpClientBuilder {
                 .logger(logger)
                 .logLevel(logLevel)
                 .target(MailChimpClient.class, "https://" + apiBase + ".api.mailchimp.com");
-        return mailChimp;
     }
 }

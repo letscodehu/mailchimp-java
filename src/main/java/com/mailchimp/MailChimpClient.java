@@ -1,9 +1,21 @@
 package com.mailchimp;
 
 import com.mailchimp.domain.*;
+import com.mailchimp.domain.cart.Cart;
+import com.mailchimp.domain.cart.CartCreate;
+import com.mailchimp.domain.customer.Customer;
+import com.mailchimp.domain.customer.CustomerCreate;
+import com.mailchimp.domain.customer.Customers;
+import com.mailchimp.domain.product.Product;
+import com.mailchimp.domain.product.ProductCreate;
+import com.mailchimp.domain.store.Store;
+import com.mailchimp.domain.store.StoreCreate;
+import com.mailchimp.domain.store.Stores;
 import com.mailchimp.query.BatchesQuery;
 import com.mailchimp.query.ListMembersQuery;
 import com.mailchimp.query.ListsQuery;
+import com.mailchimp.query.StoresQuery;
+
 import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
@@ -230,6 +242,77 @@ public interface MailChimpClient {
      */
     @RequestLine("GET /3.0/search-members?query={query}&list_id={listId}")
     SearchMembers searchMembers(@Param("query") String query, @Param("listId") String listId);
+
+    /**
+     * Search stores by query.
+     * @param query to filter.
+     * @return found stores
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/")
+    Stores getStores(@QueryMap StoresQuery query);
+
+    /**
+     * Search stores by id.
+     * @param storeId id of store
+     * @return found store by the id
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/{storeId}")
+    Store getStore(@Param("storeId") String storeId);
+
+    /**
+     * Creates a store.
+     * @param store the store to be created
+     * @return the created store
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores")
+    Store create(StoreCreate store);
+
+    /**
+     * Removes store
+     * @param storeId id of store
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("DELETE /3.0/ecommerce/stores/{storeId}")
+    void removeStore(@Param("storeId") String storeId);
+
+    /**
+     * Creates a customer.
+     * @param customer the customer to be created
+     * @return the created customer
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/customers")
+    Customer create(@Param("storeId") String storeId, CustomerCreate customer);
+
+    /**
+     * List customers for a store.
+     * @param storeId the store id to be created
+     * @return the customers
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/{storeId}/customers")
+    Customers getCustomers(@Param("storeId") String storeId);
+
+    /**
+     * Creates a cart.
+     * @param cart the cart to be created
+     * @return the created cart
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/carts")
+    Cart create(@Param("storeId") String storeId, CartCreate cart);
+
+    /**
+     * Creates a product.
+     * @param product the product to be created
+     * @return the created product
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/products")
+    Product create(@Param("storeId") String storeId, ProductCreate product);
 
     /**
      *

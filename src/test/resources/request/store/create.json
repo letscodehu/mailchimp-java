@@ -1,0 +1,7 @@
+{
+  "id" : "store_id",
+  "name" : "store_name",
+  "list_id" : "list_id",
+  "is_syncing" : false,
+  "currency_code" : "HUF"
+}

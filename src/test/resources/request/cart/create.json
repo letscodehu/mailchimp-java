@@ -1,0 +1,20 @@
+{
+  "id" : "cart_id",
+  "customer" : {
+    "id" : "customer_id",
+    "email_address" : "email@email.com",
+    "opt_in_status" : false,
+    "orders_count" : 0,
+    "total_spent" : 0
+  },
+  "lines" : [ {
+    "id" : "cart_line_id",
+    "quantity" : 1,
+    "price" : 2990,
+    "product_id" : "product_id",
+    "product_variant_id" : "product_variant_id"
+  } ],
+  "order_total" : 5000,
+  "currency_code" : "HUF",
+  "tax_total" : 0
+}
