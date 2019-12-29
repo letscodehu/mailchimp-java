@@ -1,7 +1,6 @@
 /mailchimp-java.iml
 /.idea
-.gradle/
-build/
+target/
 
 .classpath
 .project
