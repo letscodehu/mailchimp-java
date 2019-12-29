@@ -13,13 +13,13 @@ This is a Java wrapper around the MailChimp API.
 This library can be included from Maven, e.g using gradle:
 
     dependencies {
-        compile 'com.github.letscodehu:mailchimp-java:1.0.0'
+        compile 'hu.letscode:mailchimp-java:1.1.0'
     }
     
     <dependency>
-        <groupId>com.github.letscodehu</groupId>
+        <groupId>hu.letscode</groupId>
         <artifactId>mailchimp-java</artifactId>
-        <version>1.0.0</version>
+        <version>1.1.0</version>
     </dependency>
 
 ##### Installing
