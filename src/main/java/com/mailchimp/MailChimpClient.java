@@ -1,6 +1,21 @@
 package com.mailchimp;
 
-import com.mailchimp.domain.*;
+import com.mailchimp.domain.Batch;
+import com.mailchimp.domain.Batches;
+import com.mailchimp.domain.CreateBatch;
+import com.mailchimp.domain.ListMergeField;
+import com.mailchimp.domain.ListMergeFields;
+import com.mailchimp.domain.Member;
+import com.mailchimp.domain.Members;
+import com.mailchimp.domain.Root;
+import com.mailchimp.domain.SearchMembers;
+import com.mailchimp.domain.Segment;
+import com.mailchimp.domain.SegmentCreate;
+import com.mailchimp.domain.SegmentModified;
+import com.mailchimp.domain.SegmentModify;
+import com.mailchimp.domain.Segments;
+import com.mailchimp.domain.SubscriberList;
+import com.mailchimp.domain.SubscriberLists;
 import com.mailchimp.domain.cart.Cart;
 import com.mailchimp.domain.cart.CartCreate;
 import com.mailchimp.domain.customer.Customer;
@@ -16,6 +31,7 @@ import com.mailchimp.query.ListMembersQuery;
 import com.mailchimp.query.ListsQuery;
 import com.mailchimp.query.StoresQuery;
 
+import feign.Headers;
 import feign.Param;
 import feign.QueryMap;
 import feign.RequestLine;
@@ -304,6 +320,33 @@ public interface MailChimpClient {
      */
     @RequestLine("POST /3.0/ecommerce/stores/{storeId}/carts")
     Cart create(@Param("storeId") String storeId, CartCreate cart);
+
+    /**
+     * Retrieves a cart by its id.
+     * @return the cart if found
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when cartId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/{storeId}/carts/{cartId}")
+    Cart getCart(@Param("storeId") String storeId, @Param("cartId") String cartId);
+
+    /**
+     * Removes a cart by its id.
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when cartId was not found
+     */
+    @RequestLine("DELETE /3.0/ecommerce/stores/{storeId}/carts/{cartId}")
+    void removeCart(@Param("storeId") String storeId, @Param("cartId") String cartId);
+
+    /**
+     * Updates a specific cart.
+     * @return the updated cart
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when cartId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/carts/{cartId}")
+    @Headers("X-HTTP-Method-Override: PATCH")
+    Cart updateCart(@Param("storeId") String storeId, @Param("cartId") String cartId, CartCreate cart);
 
     /**
      * Creates a product.
