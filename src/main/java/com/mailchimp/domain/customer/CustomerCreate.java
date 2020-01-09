@@ -37,6 +37,10 @@ public class CustomerCreate {
         this.address = builder.address;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getId() {
         return id;
     }
@@ -71,10 +75,6 @@ public class CustomerCreate {
 
     public Address getAddress() {
         return address;
-    }
-
-    public static Builder builder() {
-        return new Builder();
     }
 
     public static final class Builder {

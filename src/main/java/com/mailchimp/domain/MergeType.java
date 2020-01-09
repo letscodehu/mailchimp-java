@@ -5,8 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * @author Micheal Swiggs
  */
-public enum MergeType
-{
+public enum MergeType {
     Text("text"),
     Number("number"),
     Radio("radio"),

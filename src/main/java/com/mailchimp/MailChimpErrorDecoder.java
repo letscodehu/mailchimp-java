@@ -5,13 +5,10 @@
  */
 package com.mailchimp;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mailchimp.domain.MailChimpError;
-import feign.FeignException;
-import feign.Response;
-import feign.RetryableException;
-import feign.codec.ErrorDecoder;
-import lombok.NonNull;
+import static java.util.Locale.US;
+import static java.util.concurrent.TimeUnit.SECONDS;
+
+import static feign.Util.RETRY_AFTER;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -20,9 +17,14 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
-import static feign.Util.RETRY_AFTER;
-import static java.util.Locale.US;
-import static java.util.concurrent.TimeUnit.SECONDS;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mailchimp.domain.MailChimpError;
+
+import feign.FeignException;
+import feign.Response;
+import feign.RetryableException;
+import feign.codec.ErrorDecoder;
+import lombok.NonNull;
 
 /**
  * @author stevensnoeijen
@@ -82,13 +84,13 @@ public class MailChimpErrorDecoder implements ErrorDecoder {
          *
          * @param retryAfter String in <a href="https://tools.ietf.org/html/rfc2616#section-14.37">Retry-After format</a>
          */
-        java.util.Date apply(String retryAfter) {
+        Date apply(String retryAfter) {
             if (retryAfter == null) {
                 return null;
             }
             if (retryAfter.matches("^[0-9]+$")) {
                 long deltaMillis = SECONDS.toMillis(Long.parseLong(retryAfter));
-                return new java.util.Date(currentTimeMillis() + deltaMillis);
+                return new Date(currentTimeMillis() + deltaMillis);
             }
             synchronized (rfc822Format) {
                 try {

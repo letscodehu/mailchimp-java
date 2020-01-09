@@ -42,6 +42,14 @@ import feign.RequestLine;
 public interface MailChimpClient {
 
     /**
+     *
+     * @return builder to build the client
+     */
+    static MailChimpClientBuilder builder() {
+        return new MailChimpClientBuilder();
+    }
+
+    /**
      * Gets API Root.
      * @return root info about the account
      */
@@ -77,7 +85,8 @@ public interface MailChimpClient {
      * @throws MailChimpErrorException when the list-id was not found
      */
     @RequestLine("PUT /3.0/lists/{list-id}/members/{subscriber-hash}")
-    Member updateListMember(@Param("list-id") String listId, @Param("subscriber-hash") String subscriberHash, Member member);
+    Member updateListMember(@Param("list-id") String listId, @Param("subscriber-hash") String subscriberHash,
+            Member member);
 
     /**
      * Removes member from list.
@@ -178,7 +187,8 @@ public interface MailChimpClient {
      * @throws MailChimpErrorException when listId was not found
      */
     @RequestLine("POST /3.0/lists/{list-id}/segments/{segment-id}")
-    SegmentModified modifySegment(@Param("list-id") String listId, @Param("segment-id") Integer segmentId, SegmentModify segment);
+    SegmentModified modifySegment(@Param("list-id") String listId, @Param("segment-id") Integer segmentId,
+            SegmentModify segment);
 
     /**
      * Get segments in list.
@@ -356,12 +366,4 @@ public interface MailChimpClient {
      */
     @RequestLine("POST /3.0/ecommerce/stores/{storeId}/products")
     Product create(@Param("storeId") String storeId, ProductCreate product);
-
-    /**
-     *
-     * @return builder to build the client
-     */
-    static MailChimpClientBuilder builder(){
-        return new MailChimpClientBuilder();
-    }
 }

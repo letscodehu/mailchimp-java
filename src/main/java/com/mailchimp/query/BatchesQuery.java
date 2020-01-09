@@ -15,7 +15,7 @@ public class BatchesQuery {
     @Getter
     private Integer count;
 
-    public static BatchesQuery firstPage(){
+    public static BatchesQuery firstPage() {
         return new BatchesQuery();
     }
 }

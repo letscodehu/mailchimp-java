@@ -43,6 +43,10 @@ public class StoreCreate {
         this.address = builder.address;
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public String getId() {
         return id;
     }
@@ -93,10 +97,6 @@ public class StoreCreate {
 
     public Address getAddress() {
         return address;
-    }
-
-    public static Builder builder() {
-        return new Builder();
     }
 
     public static class Builder {

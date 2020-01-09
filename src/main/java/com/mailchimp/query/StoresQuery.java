@@ -13,15 +13,15 @@ public class StoresQuery {
         this.count = count;
     }
 
+    public static StoresQuery firstPage() {
+        return new StoresQuery();
+    }
+
     public Integer getOffset() {
         return offset;
     }
 
     public Integer getCount() {
         return count;
-    }
-
-    public static StoresQuery firstPage() {
-        return new StoresQuery();
     }
 }

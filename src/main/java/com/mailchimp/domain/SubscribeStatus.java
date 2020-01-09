@@ -1,9 +1,5 @@
 package com.mailchimp.domain;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
-
 /**
  * Explanation and usage of the possible values: <a href="http://kb.mailchimp.com/api/article/how-to-manage-subscribers">Mail Chimp status usage</a>
  *

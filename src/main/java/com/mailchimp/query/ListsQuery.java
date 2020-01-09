@@ -16,7 +16,7 @@ public class ListsQuery {
     @Getter
     private Integer count;
 
-    public static ListsQuery firstPage(){
+    public static ListsQuery firstPage() {
         return new ListsQuery();
     }
 }

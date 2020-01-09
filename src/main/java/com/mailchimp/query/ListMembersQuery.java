@@ -1,6 +1,7 @@
 package com.mailchimp.query;
 
 import com.mailchimp.domain.SubscribeStatus;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,11 +21,11 @@ public class ListMembersQuery {
     @Getter
     private SubscribeStatus status;
 
-    public static ListMembersQuery all(){
+    public static ListMembersQuery all() {
         return new ListMembersQuery();
     }
 
-    public static ListMembersQuery firstPage(){
+    public static ListMembersQuery firstPage() {
         return new ListMembersQuery();
     }
 }

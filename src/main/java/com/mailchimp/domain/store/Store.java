@@ -38,6 +38,7 @@ public class Store {
     private String updatedAt;
     @JsonProperty("_links")
     private List<Link> links;
+    private Map<String, Automation> automations;
 
     public boolean isListIsActive() {
         return listIsActive;
@@ -78,8 +79,6 @@ public class Store {
     public void setAutomations(final Map<String, Automation> automations) {
         this.automations = automations;
     }
-
-    private Map<String,Automation> automations;
 
     public String getId() {
         return id;
@@ -201,6 +200,23 @@ public class Store {
         @JsonProperty("site_script")
         private SiteScript siteScript;
 
+        public String getSiteForeignId() {
+            return siteForeignId;
+        }
+
+        public void setSiteForeignId(final String siteForeignId) {
+            this.siteForeignId = siteForeignId;
+        }
+
+        public SiteScript getSiteScript() {
+            return siteScript;
+        }
+
+        public ConnectedSite setSiteScript(final SiteScript siteScript) {
+            this.siteScript = siteScript;
+            return this;
+        }
+
         public static class SiteScript {
 
             private String url;
@@ -221,14 +237,6 @@ public class Store {
             public void setFragment(final String fragment) {
                 this.fragment = fragment;
             }
-        }
-
-        public String getSiteForeignId() {
-            return siteForeignId;
-        }
-
-        public void setSiteForeignId(final String siteForeignId) {
-            this.siteForeignId = siteForeignId;
         }
     }
 

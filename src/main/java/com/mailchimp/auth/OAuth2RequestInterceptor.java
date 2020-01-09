@@ -1,12 +1,11 @@
 package com.mailchimp.auth;
 
+import static feign.Util.checkNotNull;
+
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 
-import static feign.Util.checkNotNull;
-
-public class OAuth2RequestInterceptor implements RequestInterceptor
-{
+public class OAuth2RequestInterceptor implements RequestInterceptor {
     private final String accessToken;
 
     /**

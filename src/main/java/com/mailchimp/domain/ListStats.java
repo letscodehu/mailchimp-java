@@ -5,10 +5,12 @@
  */
 package com.mailchimp.domain;
 
+import java.time.ZonedDateTime;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.mailchimp.jackson.MailChimpZonedDateTimeDeserializer;
-import java.time.ZonedDateTime;
+
 import lombok.Getter;
 
 /**
