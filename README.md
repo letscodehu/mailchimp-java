@@ -1,5 +1,5 @@
 This is a Java wrapper around the MailChimp API.
-
+[![Build Status](http://build.letscode.hu/buildStatus/icon?job=Mailchimp+Java+SDK)](http://build.letscode.hu/job/Mailchimp%20Java%20SDK/)
 ##### Example code for using the client
 
     MailChimpClient mailChimpClient = MailChimpClient.builder()
