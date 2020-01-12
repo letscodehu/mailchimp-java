@@ -13,6 +13,10 @@ public class StoresQuery {
         this.count = count;
     }
 
+    /**
+     * Returns an empty instance, which acts like the first page.
+     * @return StoresQuery
+     */
     public static StoresQuery firstPage() {
         return new StoresQuery();
     }

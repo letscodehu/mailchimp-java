@@ -16,6 +16,10 @@ public class ListsQuery {
     @Getter
     private Integer count;
 
+    /**
+     * Returns an empty instance, which acts like the first page.
+     * @return ListsQuery
+     */
     public static ListsQuery firstPage() {
         return new ListsQuery();
     }

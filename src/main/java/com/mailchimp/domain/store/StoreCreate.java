@@ -43,6 +43,10 @@ public class StoreCreate {
         this.address = builder.address;
     }
 
+    /**
+     * Returns a new builder instance.
+     * @return Builder
+     */
     public static Builder builder() {
         return new Builder();
     }
@@ -186,6 +190,10 @@ public class StoreCreate {
             return this;
         }
 
+        /**
+         * Builds a new object after validating the necessary fields.
+         * @return StoreCreate
+         */
         public StoreCreate build() {
             if (Objects.isNull(this.id) || Objects.isNull(this.name) || Objects.isNull(this.currencyCode) || Objects
                     .isNull(this.listId)) {

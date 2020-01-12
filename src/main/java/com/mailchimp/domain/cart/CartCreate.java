@@ -33,6 +33,10 @@ public class CartCreate {
         this.lines = builder.lines;
     }
 
+    /**
+     * Returns a new builder instance.
+     * @return Builder
+     */
     public static Builder builder() {
         return new Builder();
     }
@@ -120,6 +124,10 @@ public class CartCreate {
             return this;
         }
 
+        /**
+         * Builds a new object after validating the necessary fields.
+         * @return CartCreate
+         */
         public CartCreate build() {
             if (Objects.isNull(this.id) || Objects.isNull(this.customer) || Objects.isNull(this.currencyCode) || Objects
                     .isNull(lines)) {

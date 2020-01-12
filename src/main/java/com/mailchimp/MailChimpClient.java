@@ -244,7 +244,7 @@ public interface MailChimpClient {
     Batches getBatches(@QueryMap BatchesQuery query);
 
     /**
-     * Removes batch
+     * Removes batch.
      * @param batchId id of batch
      * @throws MailChimpErrorException when batchId was not found
      */
@@ -297,14 +297,6 @@ public interface MailChimpClient {
     Store create(StoreCreate store);
 
     /**
-     * Removes store
-     * @param storeId id of store
-     * @throws MailChimpErrorException when storeId was not found
-     */
-    @RequestLine("DELETE /3.0/ecommerce/stores/{storeId}")
-    void removeStore(@Param("storeId") String storeId);
-
-    /**
      * Creates a customer.
      * @param customer the customer to be created
      * @return the created customer
@@ -314,15 +306,6 @@ public interface MailChimpClient {
     Customer create(@Param("storeId") String storeId, CustomerCreate customer);
 
     /**
-     * List customers for a store.
-     * @param storeId the store id to be created
-     * @return the customers
-     * @throws MailChimpErrorException when storeId was not found
-     */
-    @RequestLine("GET /3.0/ecommerce/stores/{storeId}/customers")
-    Customers getCustomers(@Param("storeId") String storeId);
-
-    /**
      * Creates a cart.
      * @param cart the cart to be created
      * @return the created cart
@@ -330,6 +313,32 @@ public interface MailChimpClient {
      */
     @RequestLine("POST /3.0/ecommerce/stores/{storeId}/carts")
     Cart create(@Param("storeId") String storeId, CartCreate cart);
+
+    /**
+     * Creates a product.
+     * @param product the product to be created
+     * @return the created product
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/products")
+    Product create(@Param("storeId") String storeId, ProductCreate product);
+
+    /**
+     * Removes store.
+     * @param storeId id of store
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("DELETE /3.0/ecommerce/stores/{storeId}")
+    void removeStore(@Param("storeId") String storeId);
+
+    /**
+     * List customers for a store.
+     * @param storeId the store id to be created
+     * @return the customers
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/{storeId}/customers")
+    Customers getCustomers(@Param("storeId") String storeId);
 
     /**
      * Retrieves a cart by its id.
@@ -357,13 +366,4 @@ public interface MailChimpClient {
     @RequestLine("POST /3.0/ecommerce/stores/{storeId}/carts/{cartId}")
     @Headers("X-HTTP-Method-Override: PATCH")
     Cart updateCart(@Param("storeId") String storeId, @Param("cartId") String cartId, CartCreate cart);
-
-    /**
-     * Creates a product.
-     * @param product the product to be created
-     * @return the created product
-     * @throws MailChimpErrorException when storeId was not found
-     */
-    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/products")
-    Product create(@Param("storeId") String storeId, ProductCreate product);
 }

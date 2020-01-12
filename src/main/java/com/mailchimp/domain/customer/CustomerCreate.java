@@ -25,7 +25,7 @@ public class CustomerCreate {
     private final long totalSpent;
     private final Address address;
 
-    public CustomerCreate(final Builder builder) {
+    private CustomerCreate(final Builder builder) {
         this.id = builder.id;
         this.emailAddress = builder.emailAddress;
         this.optInStatus = builder.optInStatus;
@@ -37,6 +37,10 @@ public class CustomerCreate {
         this.address = builder.address;
     }
 
+    /**
+     * Returns a new builder instance.
+     * @return Builder
+     */
     public static Builder builder() {
         return new Builder();
     }
@@ -134,8 +138,12 @@ public class CustomerCreate {
             return this;
         }
 
+        /**
+         * Builds a new object after validating the necessary fields.
+         * @return CustomerCreate
+         */
         public CustomerCreate build() {
-            if (Objects.isNull(this.id) || Objects.isNull(this.emailAddress) || Objects.isNull(this.optInStatus)) {
+            if (Objects.isNull(this.id) || Objects.isNull(this.emailAddress)) {
                 throw new IllegalStateException("Required fields are id, email_address, opt_in_status");
             }
             return new CustomerCreate(this);

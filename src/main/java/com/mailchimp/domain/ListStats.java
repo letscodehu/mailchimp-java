@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mailchimp.domain;
 
 import java.time.ZonedDateTime;
@@ -100,7 +95,8 @@ public class ListStats {
     private Float avgUnsubRate;
 
     /**
-     * The target number of subscriptions per month for the list to keep it growing (not returned if we haven’t calculated it yet).
+     * The target number of subscriptions per month for the list to keep it growing
+     * (not returned if we haven’t calculated it yet).
      */
     @JsonProperty("target_sub_rate")
     @Getter

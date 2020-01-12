@@ -15,6 +15,10 @@ public class BatchesQuery {
     @Getter
     private Integer count;
 
+    /**
+     * Returns an empty instance, which acts like the first page.
+     * @return BatchesQuery
+     */
     public static BatchesQuery firstPage() {
         return new BatchesQuery();
     }

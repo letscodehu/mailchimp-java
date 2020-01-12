@@ -35,11 +35,12 @@ public class Member {
     /**
      * Default name for mergefield first name
      */
-    public final static String MERGEFIELD_FNAME = "FNAME";
+    public static final String MERGEFIELD_FNAME = "FNAME";
     /*
      * Default name for mergefield first name
      */
-    public final static String MERGEFIELD_LNAME = "LNAME";
+    public static final String MERGEFIELD_LNAME = "LNAME";
+
     /**
      * You can not edit an existing member's e-mail-address.
      */
@@ -114,6 +115,7 @@ public class Member {
     @JsonProperty("interests")
     private Map<String, Boolean> interests = new HashMap<>();
 
+
     @JsonIgnore
     public static String getSubscriberHash(String email) {
         try {
@@ -129,6 +131,11 @@ public class Member {
         return getSubscriberHash(emailAddress);
     }
 
+    /**
+     * Adds the key value pair to the merged fields.
+     * @param name the key
+     * @param value the value
+     */
     public void putMergeField(String name, String value) {
         mergeFields.put(name, value);
     }

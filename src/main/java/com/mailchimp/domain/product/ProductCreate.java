@@ -35,6 +35,10 @@ public class ProductCreate {
         publishedAtForeign = builder.publishedAtForeign;
     }
 
+    /**
+     * Returns a new builder instance.
+     * @return Builder
+     */
     public static Builder builder() {
         return new Builder();
     }
@@ -152,6 +156,10 @@ public class ProductCreate {
             return this;
         }
 
+        /**
+         * Builds a new object after validating the necessary fields.
+         * @return ProductCreate
+         */
         public ProductCreate build() {
             if (Objects.isNull(this.id) || Objects.isNull(this.title) || Objects.isNull(this.variants)
                     || this.variants.isEmpty()) {

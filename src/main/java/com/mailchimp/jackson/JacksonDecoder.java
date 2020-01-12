@@ -19,7 +19,7 @@ public class JacksonDecoder implements Decoder {
     private final ObjectMapper mapper;
 
     public JacksonDecoder() {
-        this(Collections.<Module>emptyList());
+        this(Collections.emptyList());
     }
 
     public JacksonDecoder(Iterable<Module> modules) {

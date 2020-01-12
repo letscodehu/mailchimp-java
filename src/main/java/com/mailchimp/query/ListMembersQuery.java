@@ -21,10 +21,18 @@ public class ListMembersQuery {
     @Getter
     private SubscribeStatus status;
 
+    /**
+     * Returns an empty instance.
+     * @return ListMembersQuery
+     */
     public static ListMembersQuery all() {
         return new ListMembersQuery();
     }
 
+    /**
+     * Returns an empty instance, which acts like the first page
+     * @return ListMembersQuery
+     */
     public static ListMembersQuery firstPage() {
         return new ListMembersQuery();
     }
