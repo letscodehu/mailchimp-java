@@ -17,6 +17,7 @@ import java.util.Scanner;
 import org.junit.ClassRule;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import com.github.tomakehurst.wiremock.matching.EqualToPattern;
 import com.mailchimp.MailChimpClient;
 import com.mailchimp.MailChimpErrorDecoder;
 import com.mailchimp.jackson.JacksonDecoder;
@@ -49,6 +50,16 @@ public abstract class AbstractIntegrationTest {
         String requestBody = getClassPathContent("request/" + requestBodyFile);
         String responseBody = getClassPathContent("response/" + responseBodyFile);
         wireMockRule.stubFor(post(urlEqualTo(url))
+                .withRequestBody(equalToJson(requestBody))
+                .willReturn(aResponse().withBody(responseBody))
+                .withBasicAuth(USERNAME, PASSWORD));
+    }
+
+    protected void expectPatch(String url, String requestBodyFile, String responseBodyFile) throws IOException {
+        String requestBody = getClassPathContent("request/" + requestBodyFile);
+        String responseBody = getClassPathContent("response/" + responseBodyFile);
+        wireMockRule.stubFor(post(urlEqualTo(url))
+                .withHeader("X-HTTP-Method-Override", new EqualToPattern("PATCH"))
                 .withRequestBody(equalToJson(requestBody))
                 .willReturn(aResponse().withBody(responseBody))
                 .withBasicAuth(USERNAME, PASSWORD));

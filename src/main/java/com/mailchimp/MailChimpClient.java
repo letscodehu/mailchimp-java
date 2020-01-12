@@ -23,6 +23,12 @@ import com.mailchimp.domain.customer.CustomerCreate;
 import com.mailchimp.domain.customer.Customers;
 import com.mailchimp.domain.product.Product;
 import com.mailchimp.domain.product.ProductCreate;
+import com.mailchimp.domain.promo.PromoCode;
+import com.mailchimp.domain.promo.PromoCodeCreate;
+import com.mailchimp.domain.promo.PromoCodes;
+import com.mailchimp.domain.promo.PromoRule;
+import com.mailchimp.domain.promo.PromoRuleCreate;
+import com.mailchimp.domain.promo.PromoRules;
 import com.mailchimp.domain.store.Store;
 import com.mailchimp.domain.store.StoreCreate;
 import com.mailchimp.domain.store.Stores;
@@ -366,4 +372,87 @@ public interface MailChimpClient {
     @RequestLine("POST /3.0/ecommerce/stores/{storeId}/carts/{cartId}")
     @Headers("X-HTTP-Method-Override: PATCH")
     Cart updateCart(@Param("storeId") String storeId, @Param("cartId") String cartId, CartCreate cart);
+
+    /**
+     * Creates a new promo rule.
+     * @return the created promo rule
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/promo-rules")
+    PromoRule createPromoRule(@Param("storeId") String storeId, PromoRuleCreate promoRule);
+
+    /**
+     * Gets promo rules for the store.
+     * @return the promo rules
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/{storeId}/promo-rules")
+    PromoRules getPromoRules(@Param("storeId") String storeId);
+
+    /**
+     * Gets a single promo rule from the store by id
+     * @return the promo rule
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when promoRuleId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/{storeId}/promo-rules/{promoRuleId}")
+    PromoRule getPromoRule(@Param("storeId") String storeId, @Param("promoRuleId") String promoRuleId);
+
+    /**
+     * Updates a promo rule
+     * @return the updated promo rule
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when promoRuleId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/promo-rules/{promoRuleId}")
+    @Headers("X-HTTP-Method-Override: PATCH")
+    PromoRule updatePromoRule(@Param("storeId") String storeId, @Param("promoRuleId") String promoRuleId,
+            PromoRule promoRule);
+
+    /**
+     * Deletes a promo rules from the store by id
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when promoRuleId was not found
+     */
+    @RequestLine("DELETE /3.0/ecommerce/stores/{storeId}/promo-rules/{promoRuleId}")
+    void deletePromoRule(@Param("storeId") String storeId, @Param("promoRuleId") String promoRuleId);
+
+    /**
+     * Creates a promo code for the given promo rule.
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when promoRuleId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/promo-rules/{promoRuleId}/promo-codes")
+    PromoCode createPromoCode(@Param("storeId") String storeId, @Param("promoRuleId") String promoRuleId,
+            PromoCodeCreate promoCodeCreate);
+
+    /**
+     * Returns promo codes for the given promo rule.
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when promoRuleId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/{storeId}/promo-rules/{promoRuleId}/promo-codes")
+    PromoCodes getPromoCodes(@Param("storeId") String storeId, @Param("promoRuleId") String promoRuleId);
+
+    /**
+     * Returns promo code for the given promo rule and id
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when promoRuleId was not found
+     * @throws MailChimpErrorException when promoCodeId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/{storeId}/promo-rules/{promoRuleId}/promo-codes/{promoCodeId}")
+    PromoCode getPromoCode(@Param("storeId") String storeId, @Param("promoRuleId") String promoRuleId,
+            @Param("promoCodeId") String promoCodeId);
+
+
+    /**
+     * Updates a promo code with the given promo rule and id.
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when promoRuleId was not found
+     * @throws MailChimpErrorException when promoCodeId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/promo-rules/{promoRuleId}/promo-codes/{promoCodeId}")
+    @Headers("X-HTTP-Method-Override: PATCH")
+    PromoCode updatePromoCode(@Param("storeId") String storeId, @Param("promoRuleId") String promoRuleId,
+            @Param("promoCodeId") String promoCodeId, PromoCode code);
 }

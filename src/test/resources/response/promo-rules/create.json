@@ -1,0 +1,39 @@
+{
+  "id": "promo-rule",
+  "title": "",
+  "description": "description",
+  "starts_at": "",
+  "ends_at": "",
+  "amount": 0.5,
+  "type": "percentage",
+  "target": "total",
+  "enabled": true,
+  "created_at_foreign": "",
+  "updated_at_foreign": "",
+  "_links": [
+    {
+      "rel": "self",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/promo-rules/promo-rule",
+      "method": "GET",
+      "targetSchema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Promorules/Response.json"
+    },
+    {
+      "rel": "parent",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/promo-rules",
+      "method": "GET",
+      "targetSchema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Promorules/CollectionResponse.json"
+    },
+    {
+      "rel": "update",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/promo-rules/promo-rule",
+      "method": "PATCH",
+      "targetSchema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/PromoRules/Response.json",
+      "schema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Promorules/PATCH.json"
+    },
+    {
+      "rel": "delete",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/promo-rules/promo-rule",
+      "method": "DELETE"
+    }
+  ]
+}

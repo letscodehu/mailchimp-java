@@ -1,0 +1,35 @@
+{
+  "id": "promo_code_id",
+  "code": "LETS-4234234-CODE",
+  "redemption_url": "https://example.com",
+  "usage_count": 50,
+  "enabled": true,
+  "created_at_foreign": "",
+  "updated_at_foreign": "",
+  "_links": [
+    {
+      "rel": "self",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/promo-rules/promo-code/promo-codes/promo_code_id",
+      "method": "GET",
+      "targetSchema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Promorules/Promocodes/Response.json"
+    },
+    {
+      "rel": "parent",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/promo-rules/promo-code",
+      "method": "GET",
+      "targetSchema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Promorules/Promocodes/CollectionResponse.json"
+    },
+    {
+      "rel": "update",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/promo-rules/promo-code/promo-codes/promo_code_id",
+      "method": "PATCH",
+      "targetSchema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Promorules/Promocodes/Response.json",
+      "schema": "https://us14.api.mailchimp.com/schema/3.0/Definitions/Ecommerce/Stores/Promorules/Promocodes/PATCH.json"
+    },
+    {
+      "rel": "delete",
+      "href": "https://us14.api.mailchimp.com/3.0/ecommerce/stores/store_id/promo-rules/promo-code/promo-codes/promo_code_id",
+      "method": "DELETE"
+    }
+  ]
+}

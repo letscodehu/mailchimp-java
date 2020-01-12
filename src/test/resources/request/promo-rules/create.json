@@ -1,0 +1,7 @@
+{
+  "id" : "promo-rule",
+  "description" : "description",
+  "amount" : 0.5,
+  "type" : "percentage",
+  "target" : "total"
+}
