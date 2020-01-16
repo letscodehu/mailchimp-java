@@ -21,6 +21,9 @@ import com.mailchimp.domain.cart.CartCreate;
 import com.mailchimp.domain.customer.Customer;
 import com.mailchimp.domain.customer.CustomerCreate;
 import com.mailchimp.domain.customer.Customers;
+import com.mailchimp.domain.order.Order;
+import com.mailchimp.domain.order.OrderCreate;
+import com.mailchimp.domain.order.Orders;
 import com.mailchimp.domain.product.Product;
 import com.mailchimp.domain.product.ProductCreate;
 import com.mailchimp.domain.promo.PromoCode;
@@ -35,6 +38,7 @@ import com.mailchimp.domain.store.Stores;
 import com.mailchimp.query.BatchesQuery;
 import com.mailchimp.query.ListMembersQuery;
 import com.mailchimp.query.ListsQuery;
+import com.mailchimp.query.OrdersQuery;
 import com.mailchimp.query.StoresQuery;
 
 import feign.Headers;
@@ -455,4 +459,35 @@ public interface MailChimpClient {
     @Headers("X-HTTP-Method-Override: PATCH")
     PromoCode updatePromoCode(@Param("storeId") String storeId, @Param("promoRuleId") String promoRuleId,
             @Param("promoCodeId") String promoCodeId, PromoCode code);
+
+    /**
+     * Creates a new order.
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("POST /3.0/ecommerce/stores/{storeId}/orders")
+    Order createOrder(@Param("storeId") String storeId, OrderCreate create);
+
+    /**
+     * Get orders associated with the store.
+     * @throws MailChimpErrorException when storeId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/{storeId}/orders")
+    Orders retrieveOrders(@Param("storeId") String storeId, OrdersQuery ordersQuery);
+
+    /**
+     * Get order associated with the store and the given id.
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when orderId was not found
+     */
+    @RequestLine("GET /3.0/ecommerce/stores/{storeId}/orders/{orderId}")
+    Order retrieveOrder(@Param("storeId") String storeId, @Param("orderId") String orderId);
+
+    /**
+     * Remove order associated with the store and the given id.
+     * @throws MailChimpErrorException when storeId was not found
+     * @throws MailChimpErrorException when orderId was not found
+     */
+    @RequestLine("DELETE /3.0/ecommerce/stores/{storeId}/orders/{orderId}")
+    void deleteOrder(@Param("storeId") String storeId, @Param("orderId") String orderId);
+
 }

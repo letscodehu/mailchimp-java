@@ -1,9 +1,13 @@
 package com.mailchimp.domain.order;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class OrderLine {
 
     private String id;
+    @JsonProperty("product_id")
     private String productId;
+    @JsonProperty("product_variant_id")
     private String productVariantId;
     private int quantity;
     private int price;

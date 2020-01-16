@@ -1,6 +1,7 @@
 package com.mailchimp.domain.order;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mailchimp.domain.Address;
@@ -299,6 +300,10 @@ public class OrderCreate {
          * @return OrderCreate
          */
         public OrderCreate build() {
+            if (Objects.isNull(this.id) || Objects.isNull(this.customer) || Objects.isNull(currencyCode)
+                    || Objects.isNull(this.lines)) {
+                throw new IllegalStateException("Required fields are id, customer, currency_code, lines");
+            }
             return new OrderCreate(this);
         }
 

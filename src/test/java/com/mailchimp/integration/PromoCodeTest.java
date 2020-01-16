@@ -6,8 +6,6 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import com.mailchimp.MailChimpClient;
-import com.mailchimp.MailChimpClientBuilder;
 import com.mailchimp.domain.promo.PromoCode;
 import com.mailchimp.domain.promo.PromoCodeCreate;
 import com.mailchimp.domain.promo.PromoCodes;

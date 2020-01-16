@@ -12,7 +12,7 @@ public class PromoRule {
     private String description;
     private String startsAt;
     private String endsAt;
-    private int amount;
+    private Float amount;
     private PromoRuleCreate.Type type;
     private PromoRuleCreate.Target target;
     private Boolean enabled;
@@ -61,11 +61,11 @@ public class PromoRule {
         this.endsAt = endsAt;
     }
 
-    public int getAmount() {
+    public Float getAmount() {
         return amount;
     }
 
-    public void setAmount(final int amount) {
+    public void setAmount(final float amount) {
         this.amount = amount;
     }
 
